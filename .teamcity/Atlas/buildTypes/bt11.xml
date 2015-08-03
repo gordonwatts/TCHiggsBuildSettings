@@ -31,7 +31,7 @@
         <checkout-rule rule="+:. =&gt; PhysicsAnalysis/JetTagging/JetTagPerformanceCalibration/CalibrationDataInterface" />
       </vcs-entry-ref>
       <vcs-entry-ref root-id="CalibrationResults__1_">
-        <checkout-rule rule="+:. =&gt; temp/store/CalibrationResults" />
+        <checkout-rule rule="+:. =&gt; CombPerf/FlavorTag/JetTagPerformanceCalibration/CalibrationResults" />
       </vcs-entry-ref>
       <vcs-entry-ref root-id="CombinationBuilder___New_ATLAS" />
     </vcs-settings>
