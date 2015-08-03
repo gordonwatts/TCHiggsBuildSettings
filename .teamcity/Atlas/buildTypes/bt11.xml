@@ -24,7 +24,7 @@
       </runner>
     </build-runners>
     <vcs-settings>
-      <vcs-entry-ref root-id="Combination__1_">
+      <vcs-entry-ref root-id="CombinationGIT">
         <checkout-rule rule="+:. =&gt; CombPerf/FlavorTag/JetTagPerformanceCalibration/Combination" />
       </vcs-entry-ref>
       <vcs-entry-ref root-id="CalibrationDataInterface__1_">
