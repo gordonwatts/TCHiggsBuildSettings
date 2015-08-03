@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="2904f079-9d2c-4b33-8edd-d6323e1c03f2" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>CI</name>
+  <description>Continuous Integration Builds for LINQToTTree.</description>
+  <settings ref="btTemplate2">
+    <disabled-settings>
+      <setting-ref ref="RUNNER_24" />
+    </disabled-settings>
+    <parameters>
+      <param name="ROOTVersion" value="v5.34.07" />
+    </parameters>
+    <build-runners order="RUNNER_17, RUNNER_1, RUNNER_2, RUNNER_3, RUNNER_4, RUNNER_24, RUNNER_37, RUNNER_38">
+      <runner id="RUNNER_24" name="Push CI builds to the nuget.org server" type="jb.nuget.publish">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="nuget.publish.files" value="*.nupkg" />
+          <param name="nuget.publish.source" value="https://www.myget.org/F/rootdotnet/" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="secure:nuget.api.key" value="zxxcc40ec6cfaead7e1b0889f4109917f9c1525c997b75a888da7634ac6dea651fb6fbc3dac6795a6b4" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_37" name="Copy of Push Symbols to symbolserver.org" type="jb.nuget.publish">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="nuget.publish.files" value="*.symbols.nupkg" />
+          <param name="nuget.publish.source" value="http://nuget.gw.SymbolSource.org/MyGet/rootdotnet/" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="secure:nuget.api.key" value="zxxcc40ec6cfaead7e1b0889f4109917f9c1525c997b75a888da7634ac6dea651fb6fbc3dac6795a6b4" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_38" name="Push nuget Packages to myget" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="PS1" />
+          <param name="jetbrains_powershell_script_code" value="LINQToTTree\BuildScripts\PushToMyGet.ps1 -APIKey &quot;949f262d-4b9c-4819-a612-f28201f5f963&quot;" />
+          <param name="jetbrains_powershell_script_file" value="LINQToTTree\BuildScripts\PushToMyGet.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings />
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

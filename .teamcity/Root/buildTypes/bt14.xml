@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="792cf1de-43e3-4605-9d46-6f63a37fa858" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>vc11 Port</name>
+  <description>Build the VS2012 (vc11) version of ROOT</description>
+  <settings ref="btTemplate5">
+    <disabled-settings>
+      <setting-ref ref="RUNNER_32" />
+    </disabled-settings>
+    <parameters>
+      <param name="CMAKE_COMPILER" value="Visual Studio 11" />
+      <param name="ROOT_BUILD_DIR" value="vc11" />
+    </parameters>
+    <build-runners order="RUNNER_29, RUNNER_31, RUNNER_32, RUNNER_35, RUNNER_33" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

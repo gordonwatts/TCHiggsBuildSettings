@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="3a56ec05-bb7f-44f9-899d-82cdad3f5a34" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>DeepTalk Build Template</name>
+  <settings>
+    <options>
+      <option name="artifactRules" value="oneclick.zip" />
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters>
+      <param name="Config" value="Release" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_8" name="Build" type="MSBuild">
+        <parameters>
+          <param name="build-file-path" value="DeepTalks.sln" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="msbuild_version" value="12.0" />
+          <param name="run-platform" value="x86" />
+          <param name="runnerArgs" value="/p:Configuration=%Config%;Platform=&quot;Any CPU&quot;" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="12.0" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_9" name="Test" type="VisualStudioTest">
+        <parameters>
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="dotNetTestRunner.Type" value="GenericProcess" />
+          <param name="mstest_enable" value="checked" />
+          <param name="vstest_engine" value="MSTest" />
+          <param name="vstest_include"><![CDATA[t_*\bin\%Config%\t_*.dll
+t_*\bin\x86\%Config%\t_*.dll]]></param>
+          <param name="vstest_runner_path" value="%teamcity.dotnet.mstest.10.0%" />
+          <param name="vstest_runsettings" value="Local.testsettings" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_10" name="Create Click-Once App" type="MSBuild">
+        <parameters>
+          <param name="build-file-path" value="DeepTalks.sln" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="msbuild_version" value="4.0" />
+          <param name="run-platform" value="x86" />
+          <param name="runnerArgs" value="/p:Configuration=%Config%;Platform=&quot;Any CPU&quot;;ApplicationRevision=%system.build.number%" />
+          <param name="targets" value="Publish" />
+          <param name="toolsVersion" value="4.0" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_11" name="Build One-click ZIP" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x64" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code" value=". .\BuildOneClickZip.ps1 -Config %Config%" />
+          <param name="jetbrains_powershell_script_file" value="BuildOneClickZip.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="DeepTalk" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</template>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="a08cd7b1-4a47-4e07-8fc2-dc78fce9f23b" type="svn" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>CalibrationResults</name>
+  <param name="externals-mode" value="externals-none" />
+  <param name="labelingMessage" value="Labeled automatically by TeamCity" />
+  <param name="labelingPatterns" value="trunk=&gt;tags" />
+  <param name="secure:svn-password" value="zxxdf0abe9b46962ba744b5ea78786744b1" />
+  <param name="svn-config-directory" value="C:\Users\gwatts\AppData\Roaming\Subversion" />
+  <param name="svn-use-default-config-directory" value="true" />
+  <param name="url" value="https://svn.cern.ch/reps/atlasperf/CombPerf/FlavorTag/JetTagPerformanceCalibration/CalibrationResults/trunk" />
+  <param name="user" value="gwatts" />
+  <param name="working-copy-format" value="1.6" />
+</vcs-root>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="e08b4ebf-b94c-4983-9b9e-2822f24f2cca" type="svn" modification-check-interval="3600" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>xAODCore</name>
+  <param name="externals-mode" value="externals-none" />
+  <param name="labelingMessage" value="Labeled automatically by TeamCity" />
+  <param name="labelingPatterns" value="trunk=&gt;tags" />
+  <param name="secure:svn-password" value="zxxdf0abe9b46962ba73fef7b5fc10b55a4" />
+  <param name="svn-config-directory" value="C:\Users\gwatts\AppData\Roaming\Subversion" />
+  <param name="url" value="https://svn.cern.ch/reps/atlasoff/Event/xAOD/xAODCore" />
+  <param name="user" value="gwatts" />
+  <param name="working-copy-format" value="1.7" />
+</vcs-root>
+

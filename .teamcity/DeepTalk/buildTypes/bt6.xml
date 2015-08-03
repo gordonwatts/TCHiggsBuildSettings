@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="92042462-7579-4a45-b411-5f336f9c09b9" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Deep Talk Release</name>
+  <description>Build the release for Deep Talk Standalone click-once app</description>
+  <settings ref="btTemplate4">
+    <parameters />
+    <build-runners order="RUNNER_8, RUNNER_9, RUNNER_10, RUNNER_11" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="92a11726-1d72-4596-87d1-7b4c53356948" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>LINTToTTree</name>
+  <description>Builds of LINQToTTree</description>
+  <parameters />
+  <cleanup />
+</project>
+

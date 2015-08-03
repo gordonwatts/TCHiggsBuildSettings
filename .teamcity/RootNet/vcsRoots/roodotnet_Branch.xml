@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="ce5c4b80-2fd3-4b21-8809-a832dc65de3c" type="mercurial" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>roodotnet Branch</name>
+  <param name="branchName" value="%RDNBranch%" />
+  <param name="hgCommandPath" value="hg" />
+  <param name="repositoryPath" value="https://hg.codeplex.com/rootdotnet" />
+  <param name="uncompressedTransfer" value="true" />
+</vcs-root>
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="64e9303a-0cf7-4737-b044-164eee66304a" paused="true" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Cal Ratio Paper</name>
+  <description>Auto build the cal ratio PLB</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="PLPaper-*.pdf&#xA;PLPaper-*.log" />
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters>
+      <param name="paperFinalPlace" value="C:\Users\gwatts\SkyDrive\Documents\ATLAS\Exotics\HiddenValley\Cal Ratio Analysis\Paper Drafts" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_18" name="Compile the tex" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\draftversion{2013.%build.number%}"
+pdflatex PLPaper.tex
+pdflatex PLPaper.tex
+pdflatex PLPaper.tex
+copy PLPaper.log PLPaper-%build.number%.log
+copy PLPaper-%build.number%.log "%paperFinalPlace%"
+copy PLPaper.pdf PLPaper-%build.number%.pdf
+copy PLPaper-%build.number%.pdf "%paperFinalPlace%"]]></param>
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="CalRatioPaper" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="groupCheckinsByCommitter" value="true" />
+          <param name="perCheckinTriggering" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

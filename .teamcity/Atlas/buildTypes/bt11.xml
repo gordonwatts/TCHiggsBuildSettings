@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="d8fd52d4-7c50-4852-943c-44518a17c3d3" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>BTag Combination CI Builds</name>
+  <description>Anytime any of the packages as they are changed</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="**/*.html&#xA;**/*.tar.gz" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="BUILD_EXT_4" />
+    </disabled-settings>
+    <parameters>
+      <param name="env.BuildNumber" value="%build.number%" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_19" name="Build the combo!" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="/bin/bash" />
+          <param name="command.parameters" value="ls" />
+          <param name="script.content" value="source ./build.sh" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Combination__1_">
+        <checkout-rule rule="+:. =&gt; temp/store/Combination" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="CalibrationDataInterface__1_">
+        <checkout-rule rule="+:. =&gt; temp/store/CalibrationDataInterface" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="CalibrationResults__1_">
+        <checkout-rule rule="+:. =&gt; temp/store/CalibrationResults" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="CombinationBuilder___New_ATLAS" />
+    </vcs-settings>
+    <requirements>
+      <equals name="system.agent.name" value="D-172-28-189-108" />
+    </requirements>
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_3" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="!!!FAILURES!!!" />
+          <param name="buildFailureOnMessage.outputText" value="CppUnit C++ test failures" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+      <extension id="BUILD_EXT_4" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="Process exited with code 0" />
+          <param name="buildFailureOnMessage.outputText" value="The fit exited with a crash" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+      <extension id="BUILD_EXT_5" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="[CppUnit] Error" />
+          <param name="buildFailureOnMessage.outputText" value="CppUnit Test Failures" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+      <extension id="BUILD_EXT_6" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="Error: execution failed" />
+          <param name="buildFailureOnMessage.outputText" value="cmt failed a step" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup>
+      <policy type="days" cleanup-level="ARTIFACTS">
+        <parameters>
+          <param name="keepDays.count" value="60" />
+        </parameters>
+      </policy>
+    </cleanup>
+  </settings>
+</build-type>
+

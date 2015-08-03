@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="2e30a4d0-2421-4a92-b737-cfc3d9b1a01c" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>CI</name>
+  <description>Continuous Build Integration for PSPROOF</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="PSProofInstaller\bin\Release\PSProofInstaller.msi" />
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters>
+      <param name="env.ROOTSYS" value="c:\root" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_15" name="Get NuGet Packages" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.1.5.21005.9019.nupkg" />
+          <param name="nuget.sources"><![CDATA[C:\Users\gwatts\AppData\Local\NuGet\Cache
+https://go.microsoft.com/fwlink/?LinkID=206669
+http://deeptalk.phys.washington.edu/rootNuGet/nuget]]></param>
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.1.5.21005.9019.nupkg" />
+          <param name="sln.path" value="PSPROOF.sln" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_14" name="Build" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="PSPROOF.sln" />
+          <param name="msbuild.prop.Configuration" value="Release" />
+          <param name="msbuild.prop.Platform" value="x86" />
+          <param name="msbuild_version" value="4.0" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Rebuild" />
+          <param name="toolsVersion" value="4.0" />
+          <param name="vs.version" value="vs2010" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="PSPROOF" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

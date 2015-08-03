@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="3c72ae59-0bd6-43b6-ba34-5d073d801c0f" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Release</name>
+  <description>Build release for LINQToTTree.</description>
+  <settings ref="btTemplate2">
+    <disabled-settings>
+      <setting-ref ref="RUNNER_6" />
+    </disabled-settings>
+    <parameters>
+      <param name="PackageNameSuffix" value="" />
+      <param name="ROOTVersion" value="v5.34.07" />
+    </parameters>
+    <build-runners order="RUNNER_17, RUNNER_1, RUNNER_2, RUNNER_3, RUNNER_4, RUNNER_6, RUNNER_16">
+      <runner id="RUNNER_6" name="Copy NuGet packages for distribution" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="copy *.nupkg \\deeptalk.phys.washington.edu\Packages" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_16" name="Publish Packages on Main NuGet Server" type="jb.nuget.publish">
+        <parameters>
+          <param name="nuget.path" value="LINQToTTree\.nuget\NuGet.exe" />
+          <param name="nuget.publish.files" value="*.nupkg" />
+          <param name="nugetCustomPath" value="LINQToTTree\.nuget\NuGet.exe" />
+          <param name="nugetPathSelector" value="custom" />
+          <param name="secure:nuget.api.key" value="zxx99b292c4cc119d879d027bf103fdb984fc8c2cbb68f4576c05dbf36accfc36be26dd1d18b7b47be0" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

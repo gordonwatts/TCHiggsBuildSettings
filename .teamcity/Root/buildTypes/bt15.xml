@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="f704d4ef-f9ec-40a4-8eca-2dcb49054446" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>vc10 Port</name>
+  <description>Build ROOT against VC2010</description>
+  <settings ref="btTemplate5">
+    <disabled-settings>
+      <setting-ref ref="RUNNER_31" />
+    </disabled-settings>
+    <parameters>
+      <param name="CMAKE_COMPILER" value="Visual Studio 10" />
+      <param name="ROOT_BUILD_DIR" value="vc10" />
+    </parameters>
+    <build-runners order="RUNNER_29, RUNNER_31, RUNNER_32, RUNNER_35, RUNNER_33" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

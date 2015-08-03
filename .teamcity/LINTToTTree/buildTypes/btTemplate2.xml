@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="17837126-6a72-481b-ac93-4c3c9100512a" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>LINQToTTree Build Template</name>
+  <settings>
+    <options>
+      <option name="artifactRules" value="*.nupkg" />
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters>
+      <param name="env.EnableNuGetPackageRestore" value="true" />
+      <param name="env.PATH" value="c:\root\bin" />
+      <param name="env.ROOT" value="c:\root" />
+      <param name="PackageNameSuffix" value="-Head" />
+      <param name="ROOTVersion" value="v5.32.04" />
+      <param name="system.Configuration" value="Release" />
+      <param name="system.Platform" value="x86" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_17" name="Update ROOT.NET version referenced in the packages" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="PS1" />
+          <param name="jetbrains_powershell_scriptArguments" value="%ROOTVersion%" />
+          <param name="jetbrains_powershell_script_file" value="LINQToTTree\BuildScripts\update-rootnet-versions.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="FILE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_1" name="Get Packages" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="LINQToTTree\.nuget\NuGet.exe" />
+          <param name="nuget.sources" value="https://go.microsoft.com/fwlink/?LinkID=206669" />
+          <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nugetCustomPath" value="LINQToTTree\.nuget\NuGet.exe" />
+          <param name="nugetPathSelector" value="custom" />
+          <param name="sln.path" value="LINQToTTree\LINQToTTree.sln" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_2" name="Build" type="MSBuild">
+        <parameters>
+          <param name="build-file-path" value="LINQToTTree\LINQToTTree.sln" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="msbuild_version" value="4.5" />
+          <param name="run-platform" value="x86" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="4.0" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_3" name="Run All Tests" type="VisualStudioTest">
+        <parameters>
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="dotNetTestRunner.Type" value="GenericProcess" />
+          <param name="mstest_enable" value="checked" />
+          <param name="teamcity.step.mode" value="execute_if_success" />
+          <param name="vstest_engine" value="MSTest" />
+          <param name="vstest_include"><![CDATA[LINQToTTree\LINQToTTreeLib.Tests\bin\x86\%system.Configuration%\LINQToTTreeLib.Tests.dll
+LINQToTTree\LINQToTreeHelpers.Tests\bin\x86\%system.Configuration%\LINQToTreeHelpers.Tests.dll
+LINQToTTree\TTreeClassGenerator.Tests\bin\x86\%system.Configuration%\TTreeClassGenerator.Tests.dll
+LINQToTTree\TTreeParser.Tests\bin\x86\%system.Configuration%\TTreeParser.Tests.dll]]></param>
+          <param name="vstest_runner_path" value="%teamcity.dotnet.mstest.11.0%" />
+          <param name="vstest_runsettings" value="LINQToTTree\Local.testsettings" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_4" name="Build Nuget Package" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x64" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code" value=". LINQToTTree\BuildScripts\cibuilder.ps1 -BuildNumber %system.build.number% -NameSuffix &quot;%PackageNameSuffix%&quot; -PDB -release &quot;%system.Platform%\%system.Configuration%&quot;" />
+          <param name="jetbrains_powershell_script_file" value="LINQToTTree\BuildScripts\cibuilder.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="execute_if_success" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="LINQToTTree" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</template>
+

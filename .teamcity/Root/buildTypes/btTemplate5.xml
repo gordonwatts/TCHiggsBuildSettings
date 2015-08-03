@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="6a4b07af-5e66-4bc4-a75d-4cfbb6f699f2" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>ROOT Build Generic</name>
+  <settings>
+    <options>
+      <option name="artifactRules" value="%ROOT_BUILD_DIR%.7z" />
+    </options>
+    <parameters>
+      <param name="ROOT_BUILD_CONFIG" value="RelWithDebInfo" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_29" name="cmake" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[if not exist %ROOT_BUILD_DIR% mkdir %ROOT_BUILD_DIR%
+cd %ROOT_BUILD_DIR%
+cmake -G "%CMAKE_COMPILER%" .. -DCMAKE_INSTALL_PREFIX=../%ROOT_BUILD_DIR%-final]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_31" name="Build ROOT (vc11)" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="%ROOT_BUILD_DIR%/ROOT.sln" />
+          <param name="msbuild.prop.Configuration" value="%ROOT_BUILD_CONFIG%" />
+          <param name="msbuild_version" value="4.5" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Build" />
+          <param name="teamcity.build.workingDir" value="%ROOT_BUILD_DIR%" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="4.0" />
+          <param name="vs.version" value="vs2012" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_32" name="Build ROOT (vc10)" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="%ROOT_BUILD_DIR%/ROOT.sln" />
+          <param name="msbuild.prop.Configuration" value="%ROOT_BUILD_CONFIG%" />
+          <param name="msbuild_version" value="4.0" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Build" />
+          <param name="teamcity.build.workingDir" value="%ROOT_BUILD_DIR%" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="4.0" />
+          <param name="vs.version" value="vs2010" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_35" name="Build Install Directory" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code" value="cmake --build . --target install --config %ROOT_BUILD_CONFIG%" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.build.workingDir" value="%ROOT_BUILD_DIR%" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_33" name="Craete Archive" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="PS1" />
+          <param name="jetbrains_powershell_script_code" value="&amp; 'C:\Program Files\7-Zip\7z.exe' a %ROOT_BUILD_DIR%.7z .\%ROOT_BUILD_DIR%-final" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="root_vc_port_fork" />
+    </vcs-settings>
+    <requirements>
+      <contains name="teamcity.agent.jvm.os.name" value="Windows" />
+    </requirements>
+    <build-triggers />
+    <cleanup />
+  </settings>
+</template>
+

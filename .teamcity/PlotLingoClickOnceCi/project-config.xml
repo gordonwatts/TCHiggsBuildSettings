@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="d2b303b4-26a7-4bd0-af58-24300c6886b0" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>PlotLingo Click Once CI</name>
+  <description>Building PlotLingo CI</description>
+  <parameters />
+  <cleanup />
+</project>
+

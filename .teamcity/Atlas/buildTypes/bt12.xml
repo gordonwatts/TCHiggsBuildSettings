@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="49368611-d624-4681-8fea-1754f9602594" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>CopyBFits</name>
+  <description>Copy over the btagging fits for upload to skydrive</description>
+  <settings>
+    <parameters>
+      <param name="bidResultsLocation" value="C:\Users\gwatts\SkyDrive\Documents\ATLAS\bid\Combination\CI Results" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_20" name="Copy Files Over" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code" value="cp *.tar.gz &quot;%bidResultsLocation%&quot;" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings />
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_2" type="buildDependencyTrigger">
+        <parameters>
+          <param name="afterSuccessfulBuildOnly" value="true" />
+          <param name="dependsOn" value="bt11" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <artifact-dependencies>
+      <dependency sourceBuildTypeId="bt11" cleanDestination="true">
+        <revisionRule name="lastSuccessful" revision="latest.lastSuccessful" />
+        <artifact sourcePath="CombPerf/FlavorTag/JetTagPerformanceCalibration/CalibrationResults/*.*" />
+      </dependency>
+    </artifact-dependencies>
+    <cleanup />
+  </settings>
+</build-type>
+

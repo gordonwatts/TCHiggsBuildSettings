@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="89b37345-976c-4371-ab56-4461fdb28c46" type="mercurial" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>LINQToTTree</name>
+  <param name="hgCommandPath" value="hg" />
+  <param name="repositoryPath" value="https://hg.codeplex.com/linqtoroot" />
+  <param name="uncompressedTransfer" value="true" />
+</vcs-root>
+

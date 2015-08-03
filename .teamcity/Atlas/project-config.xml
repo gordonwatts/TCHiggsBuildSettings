@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="152f7536-3f19-4ad1-8da4-1fd40bf09741" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>ATLAS</name>
+  <description>Various ATLAS Projects</description>
+  <parameters />
+  <cleanup />
+</project>
+

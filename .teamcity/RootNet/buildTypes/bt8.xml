@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="a017d0c0-e729-4cfd-963b-c3acbb1d51a1" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Release</name>
+  <description>Build a release version of the wrappers</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="ROOTdotNet\RDN-*\logs\*" />
+      <option name="cleanBuild" value="true" />
+      <option name="enableHangingBuildsDetection" value="false" />
+      <option name="executionTimeoutMin" value="720" />
+      <option name="maximumNumberOfBuilds" value="1" />
+      <option name="shouldFailBuildIfTestsFailed" value="false" />
+      <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
+      <option name="shouldFailBuildOnOOMEOrCrash" value="false" />
+    </options>
+    <parameters>
+      <param name="env.PATH" value="%env.PATH%;C:\Users\gwatts\Documents\ATLAS\Projects\LINQToROOT\LINQToTTree\.nuget" />
+      <param name="minROOTVersion" value="5.34.14" />
+      <param name="nugetApiKey" value="6a235898-877e-4e89-ade0-a0d75ffef426" />
+      <param name="nugetDirectory" value="C:\users\gwatts\nuget" />
+      <param name="RDNBranch" value="Release" />
+      <param name="wrapperVersion" value="5" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_50" name="NuGet Restore Packages" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nuget.use.restore" value="restore" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="sln.path" value="ROOTPackageBuilders/ROOTPackageBuilders.sln" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_48" name="Build MSI For Release" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="ROOTPackageBuilders/ROOTPackageBuilders.sln" />
+          <param name="msbuild.prop.Configuration" value="Release" />
+          <param name="msbuild_version" value="12.0" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Rebuild" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="12.0" />
+          <param name="vs.version" value="vs2013" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_12" name="Do The Build" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x64" />
+          <param name="jetbrains_powershell_execution" value="PS1" />
+          <param name="jetbrains_powershell_scriptArguments" value="%minROOTVersion% %wrapperVersion% %nugetDirectory% %nugetApiKey%" />
+          <param name="jetbrains_powershell_script_file" value="ROOTdotNET/BuildAll.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="FILE" />
+          <param name="teamcity.build.workingDir" value="ROOTdotNET" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="roodotnet_Branch">
+        <checkout-rule rule="+:. =&gt; ROOTDotNet" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="ROOTPackageBuildersForRelease">
+        <checkout-rule rule="+:. =&gt; ROOTPackageBuilders" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_1" type="schedulingTrigger">
+        <parameters>
+          <param name="cronExpression_dm" value="*" />
+          <param name="cronExpression_dw" value="?" />
+          <param name="cronExpression_hour" value="*" />
+          <param name="cronExpression_min" value="0" />
+          <param name="cronExpression_month" value="*" />
+          <param name="cronExpression_sec" value="0" />
+          <param name="cronExpression_year" value="*" />
+          <param name="dayOfWeek" value="Sunday" />
+          <param name="hour" value="21" />
+          <param name="minute" value="0" />
+          <param name="schedulingPolicy" value="daily" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="fatal error" />
+          <param name="buildFailureOnMessage.outputText" value="Fatal error during the build" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+      <extension id="BUILD_EXT_2" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="Wrapper build failed" />
+          <param name="buildFailureOnMessage.outputText" value="Build failed to build at least one wrapper" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+

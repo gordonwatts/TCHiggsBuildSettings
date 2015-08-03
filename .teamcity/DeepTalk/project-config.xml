@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="3d6f6f6d-ca2a-4c71-a227-8094f7e53bfa" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Deep Talk</name>
+  <description>Deep Talk family of libraries, etc.</description>
+  <parameters />
+  <cleanup />
+</project>
+

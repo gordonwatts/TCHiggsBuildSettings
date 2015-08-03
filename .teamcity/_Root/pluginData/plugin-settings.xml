@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <report-tabs>
+    <build-report-tab title="Code Coverage" startPage="coverage.zip!index.html" />
+    <build-report-tab title="JavaDoc" startPage="javadoc.zip!index.html" />
+  </report-tabs>
+  <versionedSettings rootId="TCHiggsBuildSettings" enabled="true" showChanges="true" buildSettings="ALWAYS_USE_CURRENT" />
+</settings>
+

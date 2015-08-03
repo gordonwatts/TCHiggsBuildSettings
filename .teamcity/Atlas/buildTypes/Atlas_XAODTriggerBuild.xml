@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="e5c90c10-db3a-4a08-94c1-f83a26ddbff8" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>xAODTriggerBuild</name>
+  <description>xAOD Trigger Build Tests</description>
+  <settings>
+    <parameters>
+      <param name="env.devRELEASE" value="devval" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_46" name="Run Build Script" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="source Trigger/xAODTriggerBuilder/build.sh" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="xAODTriggerBuilder">
+        <checkout-rule rule=".=&gt;Trigger/xAODTriggerBuilder" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigger">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigger" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODCore">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODCore" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigEgamma">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigEgamma" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigEgammaCnv">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODEGammaCnv" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigEgammaAthenaPool">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigEgammaAtheanPool" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigMissingET">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigMissingET" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigMissingETConv">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigMissingETConv" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigMissingETAthenaPool">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigMissingETAthenaPool" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="xAODTrigBPhys">
+        <checkout-rule rule=".=&gt;TriggerIngore/xAODTrigBPhys" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements>
+      <contains name="teamcity.agent.jvm.os.name" value="Linux" />
+      <contains name="teamcity.agent.jvm.os.version" value="cernvm.x86_64" />
+    </requirements>
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

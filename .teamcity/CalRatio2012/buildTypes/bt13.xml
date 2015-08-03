@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="a8891bb7-eefc-4443-9a1f-835c3cc2bb21" paused="true" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>MCQCD Study CI</name>
+  <description>CI of the MQCD Correlation Study</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="*.root&#xA;*.html" />
+      <option name="enableHangingBuildsDetection" value="false" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="RUNNER_23" />
+      <setting-ref ref="RUNNER_30" />
+      <setting-ref ref="RUNNER_36" />
+    </disabled-settings>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_28" name="Clean old results" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[del *.html
+del *.root]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_22" name="Install All NuGet Packages" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="nuget.sources"><![CDATA[https://www.nuget.org/api/v2/
+https://www.myget.org/F/rootdotnet/]]></param>
+          <param name="nuget.updatePackages.include.prerelease" value="true" />
+          <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.7.0.nupkg" />
+          <param name="sln.path" value="HVMCQCDCorrelation.sln" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_26" name="Copy MSBuild items" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code" value="cp .\packages\LINQToTTree-*\tools\*.dll .\.LINQToTTree" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_25" name="" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="HVMCQCDCorrelation.sln" />
+          <param name="msbuild.prop.Configuration" value="Release" />
+          <param name="msbuild.prop.Platform" value="x86" />
+          <param name="msbuild_version" value="4.5" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Build" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="4.0" />
+          <param name="vs.version" value="vs2012" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_27" name="Run the analysis (QCDCorrelationStudy)" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="QCDCorrelationStudy.exe" />
+          <param name="command.parameters" value="data" />
+          <param name="teamcity.build.workingDir" value="QCDCorrelationStudy\bin\x86\Release" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_34" name="Run the analysis (CorrelationPaperPlots)" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="CorrelationPaperPlots.exe" />
+          <param name="command.parameters" value="data" />
+          <param name="teamcity.build.workingDir" value="CorrelationPaperPlots\bin\x86\Release" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_36" name="Run the analysis (Simple Correlation Test)" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="CalcSimpleCorrelationTestNumbers.exe" />
+          <param name="command.parameters" value="data" />
+          <param name="teamcity.build.workingDir" value="CalcSimpleCorrelationTestNumbers\bin\x86\Release" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_23" name="Run the analysis (StatisticalComparison)" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="StatisticalComparison.exe" />
+          <param name="command.parameters" value="data" />
+          <param name="teamcity.build.workingDir" value="StatisticalComparison\bin\x86\Release" />
+          <param name="teamcity.step.mode" value="execute_if_failed" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_30" name="Run the analysis (CutFlowNumbers)" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="CutFlowNumbers.exe" />
+          <param name="command.parameters" value="datall" />
+          <param name="teamcity.build.workingDir" value="CutFlowNumbers\bin\x86\Release" />
+          <param name="teamcity.step.mode" value="execute_if_failed" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_39" name="Run the analysis (FirstJetStudies)" type="simpleRunner">
+        <parameters>
+          <param name="command.executable" value="FirstJetStudies.exe" />
+          <param name="command.parameters" value="data" />
+          <param name="teamcity.build.workingDir" value="FirstJetStudies\bin\x86\Release" />
+          <param name="teamcity.step.mode" value="execute_if_failed" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="HVMCQCD" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

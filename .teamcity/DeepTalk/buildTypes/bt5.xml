@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="5e00b18c-9070-488a-964a-3bfc4a309e24" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Deep Talk CI</name>
+  <description>Builds all the Deep Talk "stuff"</description>
+  <settings ref="btTemplate4">
+    <parameters>
+      <param name="Config" value="Debug" />
+    </parameters>
+    <build-runners order="RUNNER_8, RUNNER_9, RUNNER_10, RUNNER_11" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

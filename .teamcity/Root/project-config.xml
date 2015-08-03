@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="35f075a6-952f-426d-8003-ea35736ead9c" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>ROOT</name>
+  <description>ROOT binary builds</description>
+  <parameters />
+  <cleanup />
+</project>
+

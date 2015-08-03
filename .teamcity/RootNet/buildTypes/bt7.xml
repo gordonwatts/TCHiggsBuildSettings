@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="c8449424-d248-41de-9bc5-9b9b92322656" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>CI</name>
+  <description>Continuous Build Integration for ROOT.NET</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="rootdotnet\nuget\*.nupkg&#xA;rootdotnet\RDN-*\logs\*" />
+      <option name="cleanBuild" value="true" />
+      <option name="shouldFailBuildIfTestsFailed" value="false" />
+      <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
+      <option name="shouldFailBuildOnOOMEOrCrash" value="false" />
+    </options>
+    <parameters>
+      <param name="env.PATH" value="%env.PATH%;C:\Users\gwatts\Documents\ATLAS\Projects\LINQToROOT\LINQToTTree\.nuget" />
+      <param name="ROOTVersion" value="5.34.20" />
+      <param name="wrapperVersion" value="3-dev%build.number%" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_49" name="NuGet Package Updater" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nuget.use.restore" value="restore" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.7.1.nupkg" />
+          <param name="sln.path" value="ROOTPackageBuilders/ROOTPackageBuilders.sln" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_13" name="Set Build Number" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x64" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code" value="&quot;##teamcity[buildNumber '{0:D4}']&quot; -f %build.number%" />
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_47" name="Build PackageBuilder MSBuild items" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="ROOTPackageBuilders/ROOTPackageBuilders.sln" />
+          <param name="msbuild.prop.Configuration" value="Release" />
+          <param name="msbuild_version" value="12.0" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Rebuild" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="12.0" />
+          <param name="vs.version" value="vs2013" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_12" name="Do The Build" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x64" />
+          <param name="jetbrains_powershell_execution" value="PS1" />
+          <param name="jetbrains_powershell_scriptArguments" value="%ROOTVersion% %wrapperVersion%" />
+          <param name="jetbrains_powershell_script_file" value="rootdotnet\BuildPrerelease.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="FILE" />
+          <param name="teamcity.build.workingDir" value="rootdotnet" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="mercurial__https___hg_codeplex_com_rootdotnet">
+        <checkout-rule rule="+:. =&gt; rootdotnet" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="ROOTPackageBuilders">
+        <checkout-rule rule="+:. =&gt; ROOTPackageBuilders" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="fatal error" />
+          <param name="buildFailureOnMessage.outputText" value="Fatal error during the build" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+

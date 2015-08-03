@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="285655b9-67ec-4ae9-b7f3-f1c01f2594bc" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Deep Zoom Rendering Pack CI</name>
+  <description>Build &amp; Test the DZ Rendering Pack</description>
+  <settings>
+    <options>
+      <option name="shouldFailBuildIfTestsFailed" value="false" />
+    </options>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_5" name="Build Libraries" type="MSBuild">
+        <parameters>
+          <param name="build-file-path" value="DeepZoomRenderingPac.sln" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="msbuild_version" value="4.5" />
+          <param name="run-platform" value="x64" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="4.0" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_7" name="Run All Tests" type="VisualStudioTest">
+        <parameters>
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="dotNetTestRunner.Type" value="GenericProcess" />
+          <param name="mstest_enable" value="checked" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="vstest_engine" value="MSTest" />
+          <param name="vstest_include" value="t_*\bin\Debug\t_*.dll" />
+          <param name="vstest_runner_path" value="%teamcity.dotnet.mstest.11.0%" />
+          <param name="vstest_runsettings" value="Local.testsettings" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_21" name="Build package" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.as.artifact" value="true" />
+          <param name="nuget.pack.output.clean" value="true" />
+          <param name="nuget.pack.output.directory" value="." />
+          <param name="nuget.pack.properties" value="Configuration=Debug" />
+          <param name="nuget.pack.specFile" value="DeepZoomRenderingPack.nuspec" />
+          <param name="nuget.pack.version" value="1.0.0-alpha%build.number%" />
+          <param name="nuget.path" value="?NuGet.CommandLine.2.5.0.nupkg" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.2.5.0.nupkg" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.5.0.nupkg" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="DeepZoomRenderingPac__1_" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+
