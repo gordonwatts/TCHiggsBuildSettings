@@ -60,7 +60,7 @@
       </runner>
     </build-runners>
     <vcs-settings>
-      <vcs-entry-ref root-id="mercurial__https___hg_codeplex_com_rootdotnet">
+      <vcs-entry-ref root-id="RootNet_RootNetGit">
         <checkout-rule rule="+:. =&gt; rootdotnet" />
       </vcs-entry-ref>
       <vcs-entry-ref root-id="ROOTPackageBuilders">

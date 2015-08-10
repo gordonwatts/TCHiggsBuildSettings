@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="8c5d21b2-56f8-46f6-a148-ea014758eae6" type="mercurial" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
-  <name>mercurial: https://hg.codeplex.com/rootdotnet</name>
-  <param name="hgCommandPath" value="hg" />
-  <param name="repositoryPath" value="https://hg.codeplex.com/rootdotnet" />
-  <param name="uncompressedTransfer" value="true" />
-</vcs-root>
-
