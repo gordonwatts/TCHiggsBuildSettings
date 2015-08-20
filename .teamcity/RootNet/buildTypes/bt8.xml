@@ -15,7 +15,7 @@
     </options>
     <parameters>
       <param name="env.PATH" value="%env.PATH%;C:\Users\gwatts\Documents\ATLAS\Projects\LINQToROOT\LINQToTTree\.nuget" />
-      <param name="minROOTVersion" value="5.34.28" />
+      <param name="minROOTVersion" value="5.34.30" />
       <param name="nugetApiKey" value="6a235898-877e-4e89-ade0-a0d75ffef426" />
       <param name="nugetDirectory" value="C:\users\gwatts\nuget" />
       <param name="RDNBranch" value="Release" />
