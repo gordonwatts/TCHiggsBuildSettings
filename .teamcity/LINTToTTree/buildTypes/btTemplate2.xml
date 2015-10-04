@@ -28,11 +28,12 @@
       </runner>
       <runner id="RUNNER_1" name="Get Packages" type="jb.nuget.installer">
         <parameters>
-          <param name="nuget.path" value="LINQToTTree\.nuget\NuGet.exe" />
+          <param name="nuget.path" value="?NuGet.CommandLine.2.7.1.nupkg" />
           <param name="nuget.sources" value="https://go.microsoft.com/fwlink/?LinkID=206669" />
           <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nuget.use.restore" value="install" />
           <param name="nugetCustomPath" value="LINQToTTree\.nuget\NuGet.exe" />
-          <param name="nugetPathSelector" value="custom" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.2.7.1.nupkg" />
           <param name="sln.path" value="LINQToTTree\LINQToTTree.sln" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
