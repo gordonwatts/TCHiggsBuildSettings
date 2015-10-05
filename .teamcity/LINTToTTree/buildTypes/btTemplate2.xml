@@ -102,6 +102,7 @@ LINQToTTree\TTreeParser.Tests\bin\x86\%system.Configuration%\TTreeParser.Tests.d
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="LINQToTTree" />
+      <vcs-entry-ref root-id="LINTToTTree_LINQToTTreeGIT" />
     </vcs-settings>
     <requirements />
     <build-triggers />
