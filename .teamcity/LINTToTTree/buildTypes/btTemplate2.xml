@@ -11,7 +11,6 @@
       <param name="env.PATH" value="c:\root\bin" />
       <param name="env.ROOT" value="c:\root" />
       <param name="PackageNameSuffix" value="-Head" />
-      <param name="ROOTVersion" value="v5.32.04" />
       <param name="system.Configuration" value="Release" />
       <param name="system.Platform" value="x86" />
     </parameters>
