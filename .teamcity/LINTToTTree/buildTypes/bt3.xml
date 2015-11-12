@@ -10,7 +10,7 @@
       <param name="PackageNameSuffix" value="" />
       <param name="ROOTVersion" value="v5.34.07" />
     </parameters>
-    <build-runners order="RUNNER_1, RUNNER_2, RUNNER_3, RUNNER_4, RUNNER_6, RUNNER_16">
+    <build-runners order="RUNNER_1, RUNNER_2, RUNNER_3, RUNNER_4, RUNNER_51, RUNNER_6, RUNNER_16">
       <runner id="RUNNER_6" name="Copy NuGet packages for distribution" type="simpleRunner">
         <parameters>
           <param name="script.content" value="copy *.nupkg \\deeptalk.phys.washington.edu\Packages" />
