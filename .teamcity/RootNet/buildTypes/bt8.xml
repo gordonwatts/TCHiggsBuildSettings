@@ -13,9 +13,6 @@
       <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
       <option name="shouldFailBuildOnOOMEOrCrash" value="false" />
     </options>
-    <disabled-settings>
-      <setting-ref ref="TRIGGER_1" />
-    </disabled-settings>
     <parameters>
       <param name="env.PATH" value="%env.PATH%;C:\Users\gwatts\Documents\ATLAS\Projects\LINQToROOT\LINQToTTree\.nuget" />
       <param name="minROOTVersion" value="5.34.30" />
