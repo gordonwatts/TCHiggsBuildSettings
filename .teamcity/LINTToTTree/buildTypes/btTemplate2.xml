@@ -18,6 +18,13 @@
       <param name="system.Platform" value="x86" />
     </parameters>
     <build-runners>
+      <runner id="RUNNER_52" name="Dump It" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="set" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
       <runner id="RUNNER_17" name="Update ROOT.NET version referenced in the packages" type="jetbrains_powershell">
         <parameters>
           <param name="jetbrains_powershell_bitness" value="x86" />
@@ -99,13 +106,6 @@ LINQToTTree\TTreeParser.Tests\bin\x86\%system.Configuration%\TTreeParser.Tests.d
           <param name="jetbrains_powershell_script_file" value="LINQToTTree\BuildScripts\cibuilder.ps1" />
           <param name="jetbrains_powershell_script_mode" value="CODE" />
           <param name="teamcity.step.mode" value="execute_if_success" />
-        </parameters>
-      </runner>
-      <runner id="RUNNER_52" name="Dump It" type="simpleRunner">
-        <parameters>
-          <param name="script.content" value="set" />
-          <param name="teamcity.step.mode" value="default" />
-          <param name="use.custom.script" value="true" />
         </parameters>
       </runner>
     </build-runners>
