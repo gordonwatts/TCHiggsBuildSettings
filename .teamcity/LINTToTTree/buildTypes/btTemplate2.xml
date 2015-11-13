@@ -63,16 +63,6 @@
           <param name="toolsVersion" value="12.0" />
         </parameters>
       </runner>
-      <runner id="RUNNER_51" name="Symbol definer" type="jetbrains_powershell">
-        <parameters>
-          <param name="jetbrains_powershell_bitness" value="x86" />
-          <param name="jetbrains_powershell_execution" value="PS1" />
-          <param name="jetbrains_powershell_script_code"><![CDATA[get-content .\LINQToTTree\start_LINQToTTree.bat | ? {! $_.Contains(".s
-ln") } > .\LINQToTTree\setup.bat]]></param>
-          <param name="jetbrains_powershell_script_mode" value="CODE" />
-          <param name="teamcity.step.mode" value="default" />
-        </parameters>
-      </runner>
       <runner id="RUNNER_3" name="Run All Tests" type="VisualStudioTest">
         <parameters>
           <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
