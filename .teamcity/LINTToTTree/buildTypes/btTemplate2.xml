@@ -101,6 +101,13 @@ LINQToTTree\TTreeParser.Tests\bin\x86\%system.Configuration%\TTreeParser.Tests.d
           <param name="teamcity.step.mode" value="execute_if_success" />
         </parameters>
       </runner>
+      <runner id="RUNNER_52" name="Dump It" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="set" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="LINTToTTree_LINQToTTreeGIT" />
