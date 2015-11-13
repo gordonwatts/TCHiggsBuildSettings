@@ -12,7 +12,7 @@
     <parameters>
       <param name="env.EnableNuGetPackageRestore" value="true" />
       <param name="env.PATH" value="%ROOTSYS%\bin" />
-      <param name="env.ROOTSYS" value="%USERPROFILE%\AppData\Local\Temp\root\root-5.34.34-vc12" />
+      <param name="env.ROOTSYS" value="c:\users\gwatts\AppData\Local\Temp\root\root-5.34.34-vc12" />
       <param name="PackageNameSuffix" value="-Head" />
       <param name="system.Configuration" value="Release" />
       <param name="system.Platform" value="x86" />
