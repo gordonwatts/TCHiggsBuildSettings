@@ -89,11 +89,14 @@
           <param name="dotNetTestRunner.Type" value="GenericProcess" />
           <param name="mstest_enable" value="checked" />
           <param name="teamcity.step.mode" value="execute_if_success" />
+          <param name="vstest_cmdline" value="/noisolation" />
           <param name="vstest_engine" value="MSTest" />
+          <param name="vstest_framework" value="default" />
           <param name="vstest_include"><![CDATA[LINQToTTree\LINQToTTreeLib.Tests\bin\x86\%system.Configuration%\LINQToTTreeLib.Tests.dll
 LINQToTTree\LINQToTreeHelpers.Tests\bin\x86\%system.Configuration%\LINQToTreeHelpers.Tests.dll
 LINQToTTree\TTreeClassGenerator.Tests\bin\x86\%system.Configuration%\TTreeClassGenerator.Tests.dll
 LINQToTTree\TTreeParser.Tests\bin\x86\%system.Configuration%\TTreeParser.Tests.dll]]></param>
+          <param name="vstest_platform" value="x86" />
           <param name="vstest_runner_path" value="%teamcity.dotnet.mstest.11.0%" />
           <param name="vstest_runsettings" value="LINQToTTree\Local.testsettings" />
         </parameters>
