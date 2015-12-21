@@ -34,6 +34,7 @@
       <vcs-entry-ref root-id="Atlas_Cppunit">
         <checkout-rule rule="+:. =&gt; ./cppunit" />
       </vcs-entry-ref>
+      <vcs-entry-ref root-id="Atlas_TestPolicy" />
     </vcs-settings>
     <requirements>
       <equals name="system.agent.name" value="D-172-28-189-108" />
