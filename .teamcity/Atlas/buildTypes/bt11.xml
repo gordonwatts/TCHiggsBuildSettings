@@ -82,6 +82,14 @@
           <param name="buildFailureOnMessage.reverse" value="false" />
         </parameters>
       </extension>
+      <extension id="BUILD_EXT_7" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="11 tests out of 11 passed" />
+          <param name="buildFailureOnMessage.outputText" value="CPPUnit didn't pass exactly 11 tests" />
+          <param name="buildFailureOnMessage.reverse" value="true" />
+        </parameters>
+      </extension>
     </build-extensions>
     <cleanup>
       <policy type="days" cleanup-level="ARTIFACTS">
