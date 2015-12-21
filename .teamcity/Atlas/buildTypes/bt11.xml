@@ -28,7 +28,7 @@
         <checkout-rule rule="+:. =&gt; ./Combination" />
       </vcs-entry-ref>
       <vcs-entry-ref root-id="CalibrationDataInterface__1_">
-        <checkout-rule rule="+:. =&gt; PhysicsAnalysis/JetTagging/JetTagPerformanceCalibration/CalibrationDataInterface" />
+        <checkout-rule rule="+:. =&gt; ./CalibrationDataInterface" />
       </vcs-entry-ref>
       <vcs-entry-ref root-id="Atlas_CalibrationResultsGit">
         <checkout-rule rule="+:. =&gt; CombPerf/FlavorTag/JetTagPerformanceCalibration/CalibrationResults" />
