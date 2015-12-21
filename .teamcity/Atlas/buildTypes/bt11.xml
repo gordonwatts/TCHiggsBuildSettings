@@ -11,6 +11,7 @@
     </disabled-settings>
     <parameters>
       <param name="env.BuildNumber" value="%build.number%" />
+      <param name="env.RELEASE" value="2.3.38" />
     </parameters>
     <build-runners>
       <runner id="RUNNER_19" name="Build the combo!" type="simpleRunner">
