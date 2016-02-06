@@ -19,7 +19,7 @@
       <param name="nugetApiKey" value="6a235898-877e-4e89-ade0-a0d75ffef426" />
       <param name="nugetDirectory" value="C:\users\gwatts\nuget" />
       <param name="RDNBranch" value="Release" />
-      <param name="wrapperVersion" value="8" />
+      <param name="wrapperVersion" value="9" />
     </parameters>
     <build-runners>
       <runner id="RUNNER_50" name="NuGet Restore Packages" type="jb.nuget.installer">
