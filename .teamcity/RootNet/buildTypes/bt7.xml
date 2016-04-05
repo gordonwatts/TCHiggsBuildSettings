@@ -84,6 +84,14 @@
           <param name="buildFailureOnMessage.reverse" value="false" />
         </parameters>
       </extension>
+      <extension id="BUILD_EXT_9" type="BuildFailureOnMessage">
+        <parameters>
+          <param name="buildFailureOnMessage.conditionType" value="contains" />
+          <param name="buildFailureOnMessage.messagePattern" value="Exception calling" />
+          <param name="buildFailureOnMessage.outputText" value="Powershell Exception Detected" />
+          <param name="buildFailureOnMessage.reverse" value="false" />
+        </parameters>
+      </extension>
     </build-extensions>
     <cleanup />
   </settings>
