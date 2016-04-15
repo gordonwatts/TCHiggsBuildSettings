@@ -8,6 +8,7 @@
     </disabled-settings>
     <parameters>
       <param name="env.PATH" value="%env.TEMP%\root\root-5.34.36-vc12\bin" />
+      <param name="env.ROOTSYS" value="%env.TEMP%\root\root-5.34.36-vc12" />
     </parameters>
     <build-runners order="RUNNER_52, RUNNER_1, RUNNER_2, RUNNER_3, RUNNER_4, RUNNER_24, RUNNER_37, RUNNER_38">
       <runner id="RUNNER_24" name="Push CI builds to the nuget.org server" type="jb.nuget.publish">
