@@ -4,7 +4,7 @@
   <description>Auto build the cal ratio note</description>
   <settings>
     <options>
-      <option name="artifactRules" value="HVNote-*.pdf&#xA;HVNote-*.log" />
+      <option name="artifactRules" value="CalR_INT_NOTE2016-*.pdf&#xA;CalR_INT_NOTE2016-*.log" />
       <option name="cleanBuild" value="true" />
     </options>
     <parameters>
