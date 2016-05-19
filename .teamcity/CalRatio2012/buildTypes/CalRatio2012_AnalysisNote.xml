@@ -8,6 +8,7 @@
       <option name="cleanBuild" value="true" />
     </options>
     <parameters>
+      <param name="docLocation" value="C:\Users\gwatts\OneDrive\Documents\ATLAS\Exotics\HiddenValley\CalRatio 2015\CalRatioDocumentation" />
       <param name="paperFinalPlace" value="C:\Users\gwatts\OneDrive\Documents\ATLAS\Exotics\HiddenValley\CalRatio 2015\Analysis Note Drafts" />
     </parameters>
     <build-runners>
