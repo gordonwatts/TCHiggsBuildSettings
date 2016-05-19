@@ -16,7 +16,7 @@
         <parameters>
           <param name="jetbrains_powershell_bitness" value="x86" />
           <param name="jetbrains_powershell_execution" value="STDIN" />
-          <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\draftversion{2013.%build.number%}"
+          <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\draftversion{2016.%build.number%}"
 pdflatex CalR_INT_NOTE2016.tex
 pdflatex CalR_INT_NOTE2016.tex
 pdflatex CalR_INT_NOTE2016.tex
