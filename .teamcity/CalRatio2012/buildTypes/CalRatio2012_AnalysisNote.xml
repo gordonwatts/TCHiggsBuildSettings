@@ -8,7 +8,7 @@
       <option name="cleanBuild" value="true" />
     </options>
     <parameters>
-      <param name="paperFinalPlace" value="C:\Users\gwatts\SkyDrive\Documents\ATLAS\Exotics\HiddenValley\CalRatio 2015\Analysis Note Drafts" />
+      <param name="paperFinalPlace" value="C:\Users\gwatts\OneDrive\Documents\ATLAS\Exotics\HiddenValley\CalRatio 2015\Analysis Note Drafts" />
     </parameters>
     <build-runners>
       <runner id="RUNNER_51" name="Compile the tex" type="jetbrains_powershell">
