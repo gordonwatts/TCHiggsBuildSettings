@@ -20,11 +20,12 @@
 pdflatex CalR_INT_NOTE2016.tex
 pdflatex CalR_INT_NOTE2016.tex
 pdflatex CalR_INT_NOTE2016.tex
-copy CalR_INT_NOTE2016.pdf  "%docLocation%"
 copy CalR_INT_NOTE2016.log CalR_INT_NOTE2016-%build.number%.log
 copy CalR_INT_NOTE2016-%build.number%.log "%paperFinalPlace%"
 copy CalR_INT_NOTE2016.pdf CalR_INT_NOTE2016-%build.number%.pdf
-copy CalR_INT_NOTE2016-%build.number%.pdf "%paperFinalPlace%"]]></param>
+copy CalR_INT_NOTE2016-%build.number%.pdf "%paperFinalPlace%"
+del "%docLocation%\CalR_INT_NOTE2016*.pdf" -ErrorAction SilentlyContinue 
+copy CalR_INT_NOTE2016-%build.number%.pdf "%docLocation%"]]></param>
           <param name="jetbrains_powershell_script_mode" value="CODE" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
