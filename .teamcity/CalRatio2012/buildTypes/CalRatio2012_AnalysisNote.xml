@@ -19,10 +19,10 @@
 pdflatex HVNote.tex
 pdflatex HVNote.tex
 pdflatex HVNote.tex
-copy HVNote.log HVNote-%build.number%.log
-copy HVNote-%build.number%.log "%paperFinalPlace%"
-copy HVNote.pdf HVNote-%build.number%.pdf
-copy HVNote-%build.number%.pdf "%paperFinalPlace%"]]></param>
+copy CalR_INT_NOTE2016.log CalR_INT_NOTE2016-%build.number%.log
+copy CalR_INT_NOTE2016-%build.number%.log "%paperFinalPlace%"
+copy CalR_INT_NOTE2016.pdf CalR_INT_NOTE2016-%build.number%.pdf
+copy CalR_INT_NOTE2016-%build.number%.pdf "%paperFinalPlace%"]]></param>
           <param name="jetbrains_powershell_script_mode" value="CODE" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
