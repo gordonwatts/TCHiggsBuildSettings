@@ -20,7 +20,7 @@
 pdflatex CalR_INT_NOTE2016.tex
 pdflatex CalR_INT_NOTE2016.tex
 pdflatex CalR_INT_NOTE2016.tex
-copy CalR_INT_NOTE2016.pdf  "%docLocation%
+copy CalR_INT_NOTE2016.pdf  "%docLocation%"
 copy CalR_INT_NOTE2016.log CalR_INT_NOTE2016-%build.number%.log
 copy CalR_INT_NOTE2016-%build.number%.log "%paperFinalPlace%"
 copy CalR_INT_NOTE2016.pdf CalR_INT_NOTE2016-%build.number%.pdf
