@@ -16,9 +16,9 @@
           <param name="jetbrains_powershell_bitness" value="x86" />
           <param name="jetbrains_powershell_execution" value="STDIN" />
           <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\draftversion{2013.%build.number%}"
-pdflatex HVNote.tex
-pdflatex HVNote.tex
-pdflatex HVNote.tex
+pdflatex CalR_INT_NOTE2016.tex
+pdflatex CalR_INT_NOTE2016.tex
+pdflatex CalR_INT_NOTE2016.tex
 copy CalR_INT_NOTE2016.log CalR_INT_NOTE2016-%build.number%.log
 copy CalR_INT_NOTE2016-%build.number%.log "%paperFinalPlace%"
 copy CalR_INT_NOTE2016.pdf CalR_INT_NOTE2016-%build.number%.pdf
