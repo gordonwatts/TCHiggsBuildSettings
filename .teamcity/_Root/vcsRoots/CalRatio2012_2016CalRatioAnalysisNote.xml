@@ -4,7 +4,7 @@
   <param name="externals-mode" value="externals-none" />
   <param name="labelingMessage" value="Labeled automatically by TeamCity" />
   <param name="labelingPatterns" value="trunk=&gt;tags" />
-  <param name="secure:svn-password" value="zxxdf0abe9b46962ba79d562ce6ec87c7fa" />
+  <param name="secure:svn-password" value="zxxd53215fcccf1dc6891006c2990ef0b53" />
   <param name="svn-config-directory" value="C:\Users\gwatts\AppData\Roaming\Subversion" />
   <param name="svn-use-default-config-directory" value="true" />
   <param name="url" value="https://svn.cern.ch/reps/atlasphys-exo/Physics/Exotic/UEH/DisplacedJets/Run2/Notes/CalRatioInternal2016" />
