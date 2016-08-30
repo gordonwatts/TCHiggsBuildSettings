@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="9699d389-9e1a-4d86-8b8a-954cd13da881" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>ConfNote</name>
+  <description>Auto build the cal ratio note</description>
+  <settings>
+    <options>
+      <option name="artifactRules" value="CalR_INT_NOTE2016-*.pdf&#xA;CalR_INT_NOTE2016-*.log" />
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters>
+      <param name="docLocation" value="C:\Users\gwatts\OneDrive\Documents\ATLAS\Exotics\HiddenValley\CalRatio 2015\CalRatioDocumentation" />
+      <param name="paperFinalPlace" value="C:\Users\gwatts\OneDrive\Documents\ATLAS\Exotics\HiddenValley\CalRatio 2015\Analysis Note Drafts" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_53" name="Compile the tex" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="STDIN" />
+          <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\AtlasVersion{2016.%build.number%}"
+pdflatex CalR_INT_NOTE2016.tex
+pdflatex CalR_INT_NOTE2016.tex
+pdflatex CalR_INT_NOTE2016.tex
+copy CalR_INT_NOTE2016.log CalR_INT_NOTE2016-%build.number%.log
+copy CalR_INT_NOTE2016-%build.number%.log "%paperFinalPlace%"
+copy CalR_INT_NOTE2016.pdf CalR_INT_NOTE2016-%build.number%.pdf
+copy CalR_INT_NOTE2016-%build.number%.pdf "%paperFinalPlace%"
+del "%docLocation%\CalR_INT_NOTE2016*.pdf" -ErrorAction SilentlyContinue 
+copy CalR_INT_NOTE2016-%build.number%.pdf "%docLocation%"]]></param>
+          <param name="jetbrains_powershell_script_mode" value="CODE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="CalRatio2012_2016CalRatioAnalysisNote" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="groupCheckinsByCommitter" value="true" />
+          <param name="perCheckinTriggering" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+
