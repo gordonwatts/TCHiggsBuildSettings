@@ -17,15 +17,15 @@
           <param name="jetbrains_powershell_bitness" value="x86" />
           <param name="jetbrains_powershell_execution" value="STDIN" />
           <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\AtlasVersion{2016.%build.number%}"
-pdflatex CalR_INT_NOTE2016.tex
-pdflatex CalR_INT_NOTE2016.tex
-pdflatex CalR_INT_NOTE2016.tex
-copy CalR_INT_NOTE2016.log CalR_INT_NOTE2016-%build.number%.log
-copy CalR_INT_NOTE2016-%build.number%.log "%paperFinalPlace%"
-copy CalR_INT_NOTE2016.pdf CalR_INT_NOTE2016-%build.number%.pdf
-copy CalR_INT_NOTE2016-%build.number%.pdf "%paperFinalPlace%"
-del "%docLocation%\CalR_INT_NOTE2016*.pdf" -ErrorAction SilentlyContinue 
-copy CalR_INT_NOTE2016-%build.number%.pdf "%docLocation%"]]></param>
+pdflatex CalRatioConf2016.tex
+pdflatex CalRatioConf2016.tex
+pdflatexCalRatioConf2016.tex
+copy CalRatioConf2016.log CalRatioConf2016-%build.number%.log
+copy CalRatioConf2016-%build.number%.log "%paperFinalPlace%"
+copy CalRatioConf2016.pdf CalRatioConf2016-%build.number%.pdf
+copy CalRatioConf2016-%build.number%.pdf "%paperFinalPlace%"
+del "%docLocation%\CalRatioConf2016*.pdf" -ErrorAction SilentlyContinue 
+copy CalRatioConf2016-%build.number%.pdf "%docLocation%"]]></param>
           <param name="jetbrains_powershell_script_mode" value="CODE" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
