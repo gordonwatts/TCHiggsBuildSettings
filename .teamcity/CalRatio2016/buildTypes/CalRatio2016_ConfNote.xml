@@ -33,6 +33,7 @@ copy CalR_INT_NOTE2016-%build.number%.pdf "%docLocation%"]]></param>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="CalRatio2012_2016CalRatioAnalysisNote" />
+      <vcs-entry-ref root-id="CalRatio2016_CalRatioConfNote" />
     </vcs-settings>
     <requirements />
     <build-triggers>

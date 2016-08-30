@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="c0ad5820-f078-48cd-ab59-2ad1c81fea6e" type="svn" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>CalRatioConfNote</name>
+  <param name="externals-mode" value="externals-none" />
+  <param name="labelingMessage" value="Labeled automatically by TeamCity" />
+  <param name="labelingPatterns" value="trunk=&gt;tags" />
+  <param name="secure:svn-password" value="zxxd53215fcccf1dc6891006c2990ef0b53" />
+  <param name="svn-config-directory" value="C:\Users\gwatts\AppData\Roaming\Subversion" />
+  <param name="svn-use-default-config-directory" value="true" />
+  <param name="url" value="https://svn.cern.ch/reps/atlasphys-exo/Physics/Exotic/UEH/DisplacedJets/Run2/Notes/CalRatioConfNote2016" />
+  <param name="user" value="gwatts" />
+  <param name="working-copy-format" value="1.8" />
+</vcs-root>
+
