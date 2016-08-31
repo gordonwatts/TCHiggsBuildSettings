@@ -18,7 +18,7 @@
           <param name="jetbrains_powershell_execution" value="STDIN" />
           <param name="jetbrains_powershell_script_code"><![CDATA[set-content -path version.tex "\AtlasVersion{2016.%build.number%}"
 pdflatex CalRatioConf2016.tex
-bibtex CalRatioConf2016.bib
+bibtex CalRatioConf2016
 pdflatex CalRatioConf2016.tex
 pdfLaTeX CalRatioConf2016.tex
 copy CalRatioConf2016.log CalRatioConf2016-%build.number%.log
